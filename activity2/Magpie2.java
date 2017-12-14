@@ -40,6 +40,12 @@ public class Magpie2
         {
             response = "Why so negative?";
         }
+        
+        else if(statement.indexOf("Marco") >= 0)
+        {
+            response = "POLO!";
+        }
+        
         else if (statement.indexOf("mother") >= 0
                 || statement.indexOf("father") >= 0
                 || statement.indexOf("sister") >= 0
@@ -63,6 +69,16 @@ public class Magpie2
                 || statement.indexOf("Miss") >= 0)
         {
             response = "She sounds like a good teacher.";
+        }
+        
+        else if(statement.indexOf("food") >= 0)
+        {
+            response = "Your making me hungry, I NEED PIZZA!";
+        }
+        
+        else if(statement.indexOf("apple") >= 0)
+        {
+            response = "I'd rather deal with windows....";
         }
         
         else
