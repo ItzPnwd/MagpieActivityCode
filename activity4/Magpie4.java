@@ -58,12 +58,12 @@ public class Magpie4
         {
             // Look for a two word (you <something> me)
             // pattern
-            int psn = findKeyword(statement, "you", 0);
+            int psn = findKeyword(statement, "I", 0);
 
-            if (psn >= 0
-                    && findKeyword(statement, "me", psn) >= 0)
+            if (psn == 0
+                    && findKeyword(statement, "You", psn) >= 0)
             {
-                response = transformYouMeStatement(statement);
+                response = transformIYouStatement(statement);
             }
             else
             {
@@ -90,8 +90,8 @@ public class Magpie4
             statement = statement.substring(0, statement
                     .length() - 1);
         }
-        int psn = findKeyword (statement, "I want", 0);
-        String restOfStatement = statement.substring(psn + 9).trim();
+        int psn = findKeyword (statement, "I want ", 0);
+        String restOfStatement = statement.substring(psn + 8).trim();
         return "Would you really be happy if you had " + restOfStatement + "?";
     }
 
@@ -103,7 +103,7 @@ public class Magpie4
      * @param statement the user statement, assumed to contain "you" followed by "me"
      * @return the transformed statement
      */
-    private String transformYouMeStatement(String statement)
+    private String transformIYouStatement(String statement)
     {
         //  Remove the final period, if there is one
         statement = statement.trim();
@@ -115,11 +115,11 @@ public class Magpie4
                     .length() - 1);
         }
         
-        int psnOfYou = findKeyword (statement, "you", 0);
-        int psnOfMe = findKeyword (statement, "me", psnOfYou + 3);
+        int psnOfI = findKeyword (statement, "I", 0);
+        int psnOfYou = findKeyword (statement, "you", psnOfI + 3);
         
-        String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
-        return "What makes you think that I " + restOfStatement + " you?";
+        String restOfStatement = statement.substring(psnOfI + 2, psnOfYou).trim();
+        return "Why do you " + restOfStatement + " me?";
     }
     
     /**
